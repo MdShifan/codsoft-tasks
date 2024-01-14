@@ -1,0 +1,54 @@
+import java.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.*;
+
+public class CourReg extends JFrame {
+    public JTextField username;
+    private JPasswordField password;
+    //the jdbc database
+    static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+    static final String DB_URL = "jdbc:mysql://localhost/ls";
+    static final String USER = "root";
+    static final String PASS = "root";
+
+    public Coursys() {
+        setTitle("Courses");
+        setSize(500, 500);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setLayout(new BorderLayout());
+
+        initUI();
+    }
+
+    private void initUI() {
+        JPanel panel = new JPanel();
+        getContentPane().add(panel);
+        placeComponents(panel);
+    }
+
+    private void mainPage(Jpanel panel) {
+        panel.setLayout(null);
+
+        JLabel label1 = new JLabel("CS001:Introduction to Computer Science");
+        label1.setBounds(10, 20, 100, 25);
+        panel.add(label1);
+
+        JButton button1 = new JButton("Register");
+        button1.setBounds(10, 50, 50, 50);
+        panel.add(button1);
+
+        setVisible(true);//just like this other courses will be listed here aling with their regitser buttons
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new CourReg();
+            }
+        });
+    }
+}
